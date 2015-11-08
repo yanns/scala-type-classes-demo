@@ -1,0 +1,9 @@
+To compile and run the class:
+```
+scalac Test.scala && scala Test
+```
+
+To see the tree after implicit resolution:
+```
+scalac -Xprint:4 Test.scala
+```

@@ -7,7 +7,7 @@ trait ToJson[A] {
   def serialize(a: A): String
 }
 
-object Test {
+object Test extends App {
 
   def toJson[A](a: A)(implicit toJson: ToJson[A]): String =
     toJson.serialize(a)
@@ -31,5 +31,6 @@ object Test {
   }
 
   val persons = List(Person("bob", 34), Person("alice", 34))
-  toJson(persons)
+  val json = toJson(persons)
+  println(json)
 }
