@@ -9,8 +9,8 @@ trait ToJson[A] {
 
 object Test extends App {
 
-  def toJson[A](a: A)(implicit serializer: ToJson[A]): String =
-    serializer.serialize(a)
+  def toJson[A : ToJson](a: A): String =
+    implicitly[ToJson[A]].serialize(a)
 
   implicit val stringToJson: ToJson[String] = new ToJson[String] {
     override def serialize(a: String): String = "\"" + a + "\""
