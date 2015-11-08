@@ -1,4 +1,5 @@
 import scala.annotation.implicitNotFound
+import scala.reflect.runtime.universe._
 
 case class Person(name: String, age: Int)
 
@@ -32,5 +33,6 @@ object Test extends App {
 
   val persons = List(Person("bob", 34), Person("alice", 34))
   val json = toJson(persons)
+  println(reify { toJson(persons) })
   println(json)
 }
