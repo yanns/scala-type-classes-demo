@@ -8,8 +8,8 @@ trait ToJson[A] {
   def serialize(a: A): String
 }
 
-def toJson[A](a: A)(implicit toJson: ToJson[A]): String =
-  toJson.serialize(a)
+def toJson[A](a: A)(implicit serializer: ToJson[A]): String =
+  serializer.serialize(a)
 
 implicit val stringToJson = new ToJson[String] {
   override def serialize(a: String): String = "\"" + a + "\""
